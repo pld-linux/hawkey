@@ -1,0 +1,11 @@
+--- hawkey/src/sack.c.orig	2013-11-24 17:59:02.000000000 +0100
++++ hawkey/src/sack.c	2013-11-24 18:40:47.035621464 +0100
+@@ -916,7 +916,7 @@
+     va_start(args, format);
+     vsnprintf(buf, sizeof(buf), format_nl, args);
+     va_end(args);
+-    POOL_DEBUG(level, buf);
++    POOL_DEBUG(level, "%s", buf);
+ }
+ 
+ int
