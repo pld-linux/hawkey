@@ -24,6 +24,7 @@ BuildRequires:	sphinx-pdg
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
+Requires:	libsolv >= 0.6.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,7 +39,7 @@ Summary:	Header files for hawkey library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki hawkey
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libsolv-devel
+Requires:	libsolv-devel >= 0.6.0
 Requires:	rpm-devel
 Requires:	zlib-devel
 
