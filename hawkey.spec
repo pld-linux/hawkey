@@ -1,23 +1,22 @@
 #
 # Conditional build:
 %bcond_without	python3		# Python 3.x bindings
-#
+
+%define		gitrev	428a977
 Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
 Name:		hawkey
-%define	snap	20131119
-Version:	0.4.5
-Release:	0.%{snap}.1
+Version:	0.4.14
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	%{name}.tar.xz
-# Source0-md5:	a56265d2597c052dbe73895be1b7a994
-Patch0:		%{name}-format.patch
+Source0:	http://pkgs.fedoraproject.org/repo/pkgs/hawkey/%{name}-%{gitrev}.tar.xz/627bc061598350d8eb2615df8f6c653b/%{name}-%{gitrev}.tar.xz
+# Source0-md5:	627bc061598350d8eb2615df8f6c653b
 URL:		https://github.com/akozumpl/hawkey
 BuildRequires:	check-devel
 BuildRequires:	cmake >= 2.4
 BuildRequires:	expat-devel
-BuildRequires:	libsolv-devel
+BuildRequires:	libsolv-devel >= 0.6.0
 BuildRequires:	python-devel >= 2
 %{?with_python3:BuildRequires:	python3-devel >= 3}
 BuildRequires:	rpm-devel
@@ -98,7 +97,6 @@ Wiązania Pythona 3.x do biblioteki hawkey.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
 
 %build
 install -d build %{?with_python3:build-py3}
@@ -140,7 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS README.md
+%doc AUTHORS README.rst
 %attr(755,root,root) %{_libdir}/libhawkey.so.0
 
 %files devel
