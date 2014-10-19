@@ -7,7 +7,7 @@ Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
 Name:		hawkey
 Version:	0.4.14
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://pkgs.fedoraproject.org/repo/pkgs/hawkey/%{name}-%{gitrev}.tar.xz/627bc061598350d8eb2615df8f6c653b/%{name}-%{gitrev}.tar.xz
