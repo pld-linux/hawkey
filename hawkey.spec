@@ -2,21 +2,21 @@
 # Conditional build:
 %bcond_without	python3		# Python 3.x bindings
 
-%define		gitrev	428a977
+%define		gitrev	c3207af
 Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
 Name:		hawkey
-Version:	0.4.14
-Release:	2
+Version:	0.5.1
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://pkgs.fedoraproject.org/repo/pkgs/hawkey/%{name}-%{gitrev}.tar.xz/627bc061598350d8eb2615df8f6c653b/%{name}-%{gitrev}.tar.xz
-# Source0-md5:	627bc061598350d8eb2615df8f6c653b
+Source0:	http://pkgs.fedoraproject.org/repo/pkgs/hawkey/%{name}-%{gitrev}.tar.xz/2a48a85248e9797ba6ed3f2c3b8a81ba/%{name}-%{gitrev}.tar.xz
+# Source0-md5:	2a48a85248e9797ba6ed3f2c3b8a81ba
 URL:		https://github.com/akozumpl/hawkey
 BuildRequires:	check-devel
 BuildRequires:	cmake >= 2.4
 BuildRequires:	expat-devel
-BuildRequires:	libsolv-devel >= 0.6.0
+BuildRequires:	libsolv-devel >= 0.6.5
 BuildRequires:	python-devel >= 2
 %{?with_python3:BuildRequires:	python3-devel >= 3}
 BuildRequires:	rpm-devel
@@ -24,7 +24,7 @@ BuildRequires:	sphinx-pdg
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	libsolv >= 0.6.0
+Requires:	libsolv >= 0.6.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,7 +39,7 @@ Summary:	Header files for hawkey library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki hawkey
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libsolv-devel >= 0.6.0
+Requires:	libsolv-devel >= 0.6.5
 Requires:	rpm-devel
 Requires:	zlib-devel
 
@@ -140,7 +140,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS README.rst
-%attr(755,root,root) %{_libdir}/libhawkey.so.0
+%attr(755,root,root) %{_libdir}/libhawkey.so.1
 
 %files devel
 %defattr(644,root,root,755)
