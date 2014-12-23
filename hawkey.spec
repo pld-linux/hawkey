@@ -2,17 +2,17 @@
 # Conditional build:
 %bcond_without	python3		# Python 3.x bindings
 
-%define		gitrev	c3207af
+%define		gitrev	029fd67
 Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
 Name:		hawkey
-Version:	0.5.1
+Version:	0.5.2
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://pkgs.fedoraproject.org/repo/pkgs/hawkey/%{name}-%{gitrev}.tar.xz/2a48a85248e9797ba6ed3f2c3b8a81ba/%{name}-%{gitrev}.tar.xz
-# Source0-md5:	2a48a85248e9797ba6ed3f2c3b8a81ba
-URL:		https://github.com/akozumpl/hawkey
+Source0:	http://pkgs.fedoraproject.org/repo/pkgs/hawkey/%{name}-%{gitrev}.tar.xz/a7a8adde3c4312fd1705da6e43c27c3a/%{name}-%{gitrev}.tar.xz
+# Source0-md5:	a7a8adde3c4312fd1705da6e43c27c3a
+URL:		https://github.com/rpm-software-management/hawkey
 BuildRequires:	check-devel
 BuildRequires:	cmake >= 2.4
 BuildRequires:	expat-devel
