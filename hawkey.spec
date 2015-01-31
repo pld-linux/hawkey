@@ -7,7 +7,7 @@ Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
 Name:		hawkey
 Version:	0.5.2
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://pkgs.fedoraproject.org/repo/pkgs/hawkey/%{name}-%{gitrev}.tar.xz/a7a8adde3c4312fd1705da6e43c27c3a/%{name}-%{gitrev}.tar.xz
@@ -126,7 +126,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/hawkey/test
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}/hawkey
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}/hawkey
 %py_postclean
@@ -148,6 +147,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/hawkey
 %{_pkgconfigdir}/hawkey.pc
 %{_mandir}/man3/hawkey.3*
+%dir %{py_sitedir}/hawkey/test
+%{py_sitedir}/hawkey/test/*.py[co]
+%attr(755,root,root) %{py_sitedir}/hawkey/test/_hawkey_testmodule.so
 
 %files apidocs
 %defattr(644,root,root,755)
@@ -157,12 +159,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/hawkey
 %attr(755,root,root) %{py_sitedir}/hawkey/_hawkeymodule.so
-%{py_sitedir}/hawkey/__init__.py[co]
+%{py_sitedir}/hawkey/*.py[co]
 
 %if %{with python3}
 %files -n python3-hawkey
 %defattr(644,root,root,755)
 %dir %{py3_sitedir}/hawkey
 %attr(755,root,root) %{py3_sitedir}/hawkey/_hawkey.so
-%{py3_sitedir}/hawkey/__init__.py
+%{py3_sitedir}/hawkey/*.py
 %endif
