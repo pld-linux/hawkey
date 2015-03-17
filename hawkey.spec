@@ -2,16 +2,16 @@
 # Conditional build:
 %bcond_without	python3		# Python 3.x bindings
 
-%define		gitrev	029fd67
+%define		gitrev	b5cd13dc11dac38d4b7667dfe91b974424157935
 Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
 Name:		hawkey
-Version:	0.5.2
-Release:	2
+Version:	0.5.3
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://pkgs.fedoraproject.org/repo/pkgs/hawkey/%{name}-%{gitrev}.tar.xz/a7a8adde3c4312fd1705da6e43c27c3a/%{name}-%{gitrev}.tar.xz
-# Source0-md5:	a7a8adde3c4312fd1705da6e43c27c3a
+Source0:	https://github.com/rpm-software-management/hawkey/archive/%{gitrev}/%{name}-%{gitrev}.tar.gz
+# Source0-md5:	83147172a890bcc682cd7e0d9a5d34ed
 URL:		https://github.com/rpm-software-management/hawkey
 BuildRequires:	check-devel
 BuildRequires:	cmake >= 2.4
@@ -42,24 +42,13 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	libsolv-devel >= 0.6.5
 Requires:	rpm-devel
 Requires:	zlib-devel
+Obsoletes:	hawkey-static
 
 %description devel
 Header files for hawkey library.
 
 %description devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki hawkey.
-
-%package static
-Summary:	Static hawkey library
-Summary(pl.UTF-8):	Statyczna biblioteka hawkey
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Static hawkey library.
-
-%description static -l pl.UTF-8
-Statyczna biblioteka hawkey.
 
 %package apidocs
 Summary:	API documentation for hawkey library
@@ -84,6 +73,18 @@ Python 2.x bindings for hawkey library.
 %description -n python-hawkey -l pl.UTF-8
 Wiązania Pythona 2.x do biblioteki hawkey.
 
+%package -n python-hawkey-test
+Summary:	Test module for hawkey library
+Summary(pl.UTF-8):	Moduł testowy dla biblioteki hawkey
+Group:		Development/Libraries
+Requires:	python-hawkey = %{version}-%{release}
+
+%description -n python-hawkey-test
+Test module for hawkey library.
+
+%description -n python-hawkey-test -l pl.UTF-8
+Moduł testowy dla biblioteki hawkey.
+
 %package -n python3-hawkey
 Summary:	Python 3.x bindings for hawkey library
 Summary(pl.UTF-8):	Wiązania Pythona 3.x do biblioteki hawkey
@@ -97,7 +98,7 @@ Python 3.x bindings for hawkey library.
 Wiązania Pythona 3.x do biblioteki hawkey.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{gitrev}
 
 %build
 install -d build %{?with_python3:build-py3}
@@ -139,7 +140,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS README.rst
-%attr(755,root,root) %{_libdir}/libhawkey.so.1
+%attr(755,root,root) %{_libdir}/libhawkey.so.2
 
 %files devel
 %defattr(644,root,root,755)
@@ -147,9 +148,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/hawkey
 %{_pkgconfigdir}/hawkey.pc
 %{_mandir}/man3/hawkey.3*
-%dir %{py_sitedir}/hawkey/test
-%{py_sitedir}/hawkey/test/*.py[co]
-%attr(755,root,root) %{py_sitedir}/hawkey/test/_hawkey_testmodule.so
 
 %files apidocs
 %defattr(644,root,root,755)
@@ -160,6 +158,12 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/hawkey
 %attr(755,root,root) %{py_sitedir}/hawkey/_hawkeymodule.so
 %{py_sitedir}/hawkey/*.py[co]
+
+%files -n python-hawkey-test
+%defattr(644,root,root,755)
+%dir %{py_sitedir}/hawkey/test
+%{py_sitedir}/hawkey/test/*.py[co]
+%attr(755,root,root) %{py_sitedir}/hawkey/test/_hawkey_testmodule.so
 
 %if %{with python3}
 %files -n python3-hawkey
