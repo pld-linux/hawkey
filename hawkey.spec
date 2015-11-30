@@ -7,7 +7,7 @@ Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
 Name:		hawkey
 Version:	0.5.3
-Release:	5
+Release:	6
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	https://github.com/rpm-software-management/hawkey/archive/%{gitrev}/%{name}-%{gitrev}.tar.gz
@@ -99,11 +99,13 @@ Wiązania Pythona 3.x do biblioteki hawkey.
 
 %prep
 %setup -q -n %{name}-%{gitrev}
+: > cmake/modules/FindPythonInstDir.cmake
 
 %build
 install -d build %{?with_python3:build-py3}
 cd build
-%cmake ..
+%cmake .. \
+	-DPYTHON_INSTALL_DIR=%{py_sitedir}
 
 %{__make}
 %{__make} doc
@@ -111,6 +113,7 @@ cd build
 %if %{with python3}
 cd ../build-py3
 %cmake .. \
+	-DPYTHON_INSTALL_DIR=%{py3_sitedir} \
 	-DPYTHON_DESIRED=3
 
 %{__make}
