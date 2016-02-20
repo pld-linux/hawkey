@@ -2,16 +2,17 @@
 # Conditional build:
 %bcond_without	python3		# Python 3.x bindings
 
-%define		gitrev	b5cd13dc11dac38d4b7667dfe91b974424157935
 Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
 Name:		hawkey
-Version:	0.5.3
-Release:	6
+Version:	0.6.2
+%define	gitrel	1
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	https://github.com/rpm-software-management/hawkey/archive/%{gitrev}/%{name}-%{gitrev}.tar.gz
-# Source0-md5:	83147172a890bcc682cd7e0d9a5d34ed
+#Source0Download: https://github.com/rpm-software-management/hawkey/releases
+Source0:	https://github.com/rpm-software-management/hawkey/archive/%{name}-%{version}-%{gitrel}.tar.gz
+# Source0-md5:	ceac995a974f585fb3e65817daa80092
 URL:		https://github.com/rpm-software-management/hawkey
 BuildRequires:	check-devel
 BuildRequires:	cmake >= 2.4
@@ -98,7 +99,7 @@ Python 3.x bindings for hawkey library.
 Wiązania Pythona 3.x do biblioteki hawkey.
 
 %prep
-%setup -q -n %{name}-%{gitrev}
+%setup -q -n %{name}-%{name}-%{version}-%{gitrel}
 : > cmake/modules/FindPythonInstDir.cmake
 
 %build
