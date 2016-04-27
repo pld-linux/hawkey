@@ -4,10 +4,10 @@
 
 Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
+%define	gitrel	1
 Name:		hawkey
 Version:	0.6.2
-%define	gitrel	1
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://github.com/rpm-software-management/hawkey/releases
@@ -55,6 +55,9 @@ Pliki nagłówkowe biblioteki hawkey.
 Summary:	API documentation for hawkey library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki hawkey
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API documentation for hawkey library.
