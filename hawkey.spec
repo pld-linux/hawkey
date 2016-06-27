@@ -4,15 +4,15 @@
 
 Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
-%define	gitrel	1
+%define	gitrel	2
 Name:		hawkey
-Version:	0.6.2
+Version:	0.6.3
 Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://github.com/rpm-software-management/hawkey/releases
 Source0:	https://github.com/rpm-software-management/hawkey/archive/%{name}-%{version}-%{gitrel}.tar.gz
-# Source0-md5:	ceac995a974f585fb3e65817daa80092
+# Source0-md5:	bf0ef0658110acee30e85d047dac70c3
 URL:		https://github.com/rpm-software-management/hawkey
 BuildRequires:	check-devel
 BuildRequires:	cmake >= 2.4
