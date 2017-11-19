@@ -4,23 +4,24 @@
 
 Summary:	High-level API for the libsolv library
 Summary(pl.UTF-8):	Wysokopoziomowe API dla biblioteki libsolv
-%define	gitrel	2
 Name:		hawkey
-Version:	0.6.3
-Release:	3
+Version:	0.6.4
+%define	gitrel	1
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://github.com/rpm-software-management/hawkey/releases
 Source0:	https://github.com/rpm-software-management/hawkey/archive/%{name}-%{version}-%{gitrel}.tar.gz
-# Source0-md5:	bf0ef0658110acee30e85d047dac70c3
+# Source0-md5:	abc0179de2cb162c170c1fce17ed7f50
 URL:		https://github.com/rpm-software-management/hawkey
 BuildRequires:	check-devel
 BuildRequires:	cmake >= 2.4
 BuildRequires:	expat-devel
 BuildRequires:	libsolv-devel >= 0.6.5
 BuildRequires:	python-devel >= 2
-%{?with_python3:BuildRequires:	python3-devel >= 3}
+%{?with_python3:BuildRequires:	python3-devel >= 1:3.2}
 BuildRequires:	rpm-devel
+BuildRequires:	rpmbuild(macros) >= 1.612
 BuildRequires:	sphinx-pdg
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -137,6 +138,10 @@ rm -rf $RPM_BUILD_ROOT
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}/hawkey
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}/hawkey
 %py_postclean
+%if %{with python3}
+%py3_comp $RPM_BUILD_ROOT%{py3_sitedir}/hawkey
+%py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}/hawkey
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -178,4 +183,5 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py3_sitedir}/hawkey
 %attr(755,root,root) %{py3_sitedir}/hawkey/_hawkey.so
 %{py3_sitedir}/hawkey/*.py
+%{py3_sitedir}/hawkey/__pycache__
 %endif
