@@ -26,6 +26,7 @@ BuildRequires:	libsolv-devel >= 0.6.5
 %{?with_python:BuildRequires:	python-devel >= 2}
 %{?with_python3:BuildRequires:	python3-devel >= 1:3.2}
 BuildRequires:	rpm-devel
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.612
 BuildRequires:	sphinx-pdg
 BuildRequires:	tar >= 1:1.22
@@ -52,7 +53,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	libsolv-devel >= 0.6.5
 Requires:	rpm-devel
 Requires:	zlib-devel
-Obsoletes:	hawkey-static
+Obsoletes:	hawkey-static < 0.5.3
 
 %description devel
 Header files for hawkey library.
