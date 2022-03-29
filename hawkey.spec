@@ -15,7 +15,7 @@ Version:	0.6.4
 Release:	3
 License:	LGPL v2.1+
 Group:		Libraries
-#Source0Download: https://github.com/rpm-software-management/hawkey/releases
+#Source0Download: https://github.com/rpm-software-management/hawkey/tags
 Source0:	https://github.com/rpm-software-management/hawkey/archive/%{name}-%{version}-%{gitrel}.tar.gz
 # Source0-md5:	abc0179de2cb162c170c1fce17ed7f50
 URL:		https://github.com/rpm-software-management/hawkey
